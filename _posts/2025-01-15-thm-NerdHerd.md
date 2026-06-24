@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "HackTheBox — NerdHerd [Write-up]"
+title: "TryHackMe — NerdHerd [Write-up]"
 date: 2025-01-15
 platform: thm
 difficulty: Medium
