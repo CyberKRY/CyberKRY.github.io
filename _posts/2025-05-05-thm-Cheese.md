@@ -13,7 +13,8 @@ tags: [linux, SQLi, LFI, xxd]
 **Machine:** Cheese  
 **Platform:** TryHackMe  
 **Difficulty:** Easy  
-**OS:** Linux  
+**OS:** Linux
+
 ---
 
 # Cheese CTF - TryHackMe Writeup 🧀
