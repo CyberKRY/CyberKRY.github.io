@@ -561,6 +561,70 @@ section { padding: 80px 0; }
 }
 
 /* ===========================
+   WRITEUPS ARCHIVE PAGE (folders)
+=========================== */
+.writeups-page {
+  padding-top: 80px;
+  padding-bottom: 100px;
+  min-height: 60vh;
+}
+
+.writeup-folders__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.folder-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.folder-card:hover,
+.folder-card:focus {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  outline: none;
+}
+
+.folder-card__icon {
+  font-size: 38px;
+  margin-bottom: 14px;
+}
+
+.folder-card__name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.folder-card__count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.folder-back-btn {
+  margin-bottom: 28px;
+}
+
+.platform-view__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+/* ===========================
    FOOTER
 =========================== */
 .footer {
