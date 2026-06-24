@@ -17,6 +17,7 @@ tags: [wordpress, LFI, socat]
 
 ---
 
+
 This write-up covers the steps I took to complete the "[All-in-One](https://tryhackme.com/room/allinonemj)" room on TryHackMe.  
 The machine focuses on WordPress exploitation, LFI, privilege escalation, and is a great challenge for anyone looking to sharpen their penetration testing skills.
 
