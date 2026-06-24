@@ -1,12 +1,11 @@
-title: "YOUR_NAME | Cybersecurity"
+title: "CyberKRY | Cybersecurity"
 description: "Penetration Tester & Security Researcher"
-author: "YOUR_NAME"
-email: "your@email.com"
-github_username: "YOUR_GITHUB"
-linkedin_username: "YOUR_LINKEDIN"
-twitter_username: "YOUR_TWITTER"
+author: "CyberKRY"
+email: "CyberKRY@proton.me"
+github_username: "CyberKRY"
+Medium: "cyberkry"
 
-url: "https://YOUR_GITHUB.github.io"
+url: "https://CyberKRY.github.io"
 baseurl: ""
 
 # Build settings
