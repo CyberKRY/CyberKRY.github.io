@@ -13,7 +13,8 @@ tags: [linux, brute force]
 **Machine:** Capture  
 **Platform:** TryHackMe  
 **Difficulty:** Easy  
-**OS:** Linux  
+**OS:** Linux
+
 ---
 
 ## Capture - [TryHackMe](https://tryhackme.com/room/capture) Writeup 
