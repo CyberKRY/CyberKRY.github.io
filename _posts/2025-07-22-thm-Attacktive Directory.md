@@ -17,6 +17,8 @@ tags: [Windows, enum4linux, smb]
 
 ---
 
+## Short description:
+
 This write-up covers the process of enumerating and exploiting an Active Directory (AD) environment using various tools such as enum4linux, kerbrute, GetNPUsers.py, john, and secretsdump.py. The objective is to extract credentials and escalate privileges to domain admin access.
 
 ## Enumeration Phase
