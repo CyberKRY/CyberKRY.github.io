@@ -17,6 +17,8 @@ description: "Exploiting a Samba vulnerability (CVE-2007-2447) to gain root acce
 **OS:** Linux  
 **CVE:** CVE-2007-2447
 
+---
+
 ## Introduction
 This box offered a classic web exploitation path, starting from directory enumeration to remote code execution via a known vulnerability in a billing system. With some privilege escalation tricks involving <b>fail2ban</b>, we were able to achieve full root access.
 
