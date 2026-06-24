@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "TryHackMe — NerdHerd [Write-up]"
-date: 2025-01-15
+date: 2025-09-06
 platform: thm
 difficulty: Medium
 category: write-up
