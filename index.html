@@ -24,26 +24,25 @@ title: Home
       </p>
 
       <div class="hero__actions">
-        <a href="#projects" class="btn btn--primary">View Projects</a>
+        <a href="{{ '/writeups/' | relative_url }}" class="btn btn--primary">View Write-ups</a>
         <a href="#contact" class="btn btn--outline">Get in Touch</a>
       </div>
 
       <div class="hero__stats">
         <div>
           <div class="stat__value">485+</div>
+          <!-- EDIT: your TryHackMe rooms completed -->
           <div class="stat__label">THM Rooms</div>
         </div>
         <div>
           <div class="stat__value">15</div>
+          <!-- EDIT: your HackTheBox machines -->
           <div class="stat__label">HTB Machines</div>
         </div>
         <div>
           <div class="stat__value">30</div>
+          <!-- EDIT: your PortSwigger labs completed -->
           <div class="stat__label">PortSwigger Labs</div>
-        </div>
-        <div>
-          <div class="stat__value">2</div>
-          <div class="stat__label">CTF Wins</div>
         </div>
       </div>
 
@@ -110,9 +109,6 @@ title: Home
       <div class="cert-item__org">Continuous hands-on learning and skill development</div>
     </div>
   </div>
-
-</div>
-
       </div>
     </div>
   </div>
@@ -187,90 +183,7 @@ title: Home
   </div>
 </section>
 
-<!-- ==================== PROJECTS ==================== -->
-<section class="projects-section" id="projects">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Work</div>
-      <h2 class="section-title">Featured <span>Projects</span></h2>
-    </div>
-
-    <div class="projects__grid">
-
-      {% assign featured_projects = site.projects | where: "featured", true | sort: "date" | reverse %}
-      {% if featured_projects.size > 0 %}
-        {% for project in featured_projects limit: 6 %}
-        <div class="project-card">
-          <div class="project-card__platform">
-            <span class="platform-dot {{ project.platform | downcase }}"></span>
-            {{ project.platform | upcase }}
-          </div>
-          <h3 class="project-card__title">{{ project.title }}</h3>
-          <p class="project-card__desc">{{ project.description }}</p>
-          <div class="project-card__footer">
-            {% if project.difficulty %}
-            <span class="difficulty difficulty--{{ project.difficulty | downcase }}">{{ project.difficulty }}</span>
-            {% endif %}
-            <a href="{{ project.url | relative_url }}" class="project-card__link">
-              Read more →
-            </a>
-          </div>
-        </div>
-        {% endfor %}
-      {% else %}
-        <!-- PLACEHOLDER CARDS — delete these once you add real projects -->
-
-        <div class="project-card">
-          <div class="project-card__platform">
-            <span class="platform-dot htb"></span> HACKTHEBOX
-          </div>
-          <h3 class="project-card__title">Machine Name — YOUR_MACHINE</h3>
-          <p class="project-card__desc">
-            Short description of the machine. What vulnerabilities were exploited,
-            what you learned. Keep it 2-3 sentences.
-          </p>
-          <div class="project-card__footer">
-            <span class="difficulty difficulty--medium">Medium</span>
-            <a href="#" class="project-card__link">Read more →</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card__platform">
-            <span class="platform-dot thm"></span> TRYHACKME
-          </div>
-          <h3 class="project-card__title">Room Name — YOUR_ROOM</h3>
-          <p class="project-card__desc">
-            Short description of the room. What vulnerabilities were exploited,
-            what you learned. Keep it 2-3 sentences.
-          </p>
-          <div class="project-card__footer">
-            <span class="difficulty difficulty--easy">Easy</span>
-            <a href="#" class="project-card__link">Read more →</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card__platform">
-            <span class="platform-dot ps"></span> PORTSWIGGER
-          </div>
-          <h3 class="project-card__title">Lab — SQL Injection</h3>
-          <p class="project-card__desc">
-            Exploited a SQL injection vulnerability to bypass authentication and
-            extract sensitive data from the backend database.
-          </p>
-          <div class="project-card__footer">
-            <span class="difficulty difficulty--hard">Hard</span>
-            <a href="#" class="project-card__link">Read more →</a>
-          </div>
-        </div>
-
-      {% endif %}
-    </div>
-  </div>
-</section>
-
-<!-- ==================== WRITE-UPS ==================== -->
+<!-- ==================== WRITE-UPS (preview) ==================== -->
 <section class="writeups" id="writeups">
   <div class="container">
     <div class="section-header">
@@ -281,7 +194,7 @@ title: Home
     <div class="writeup-list">
       {% assign posts = site.posts | sort: "date" | reverse %}
       {% if posts.size > 0 %}
-        {% for post in posts limit: 8 %}
+        {% for post in posts limit: 3 %}
         <a href="{{ post.url | relative_url }}" class="writeup-item">
           <span class="writeup-item__date">{{ post.date | date: "%b %d, %Y" }}</span>
           <span class="writeup-item__platform">
@@ -300,22 +213,11 @@ title: Home
         </a>
         {% endfor %}
       {% else %}
-        <!-- PLACEHOLDER — delete once you add real write-ups -->
-        <div class="writeup-item" style="cursor:default;">
-          <span class="writeup-item__date">Jan 01, 2025</span>
-          <span class="writeup-item__platform">🟢</span>
-          <span class="writeup-item__title">HackTheBox — YOUR_MACHINE_NAME [Write-up]</span>
-          <div class="writeup-item__tags"><span class="tag">linux</span><span class="tag">privesc</span></div>
-          <span class="writeup-item__arrow">→</span>
-        </div>
-        <div class="writeup-item" style="cursor:default;">
-          <span class="writeup-item__date">Jan 01, 2025</span>
-          <span class="writeup-item__platform">🔴</span>
-          <span class="writeup-item__title">TryHackMe — YOUR_ROOM_NAME [Write-up]</span>
-          <div class="writeup-item__tags"><span class="tag">web</span><span class="tag">sqli</span></div>
-          <span class="writeup-item__arrow">→</span>
-        </div>
       {% endif %}
+    </div>
+
+    <div style="text-align:center; margin-top:32px;">
+      <a href="{{ '/writeups/' | relative_url }}" class="btn btn--outline">View All Write-ups →</a>
     </div>
   </div>
 </section>
@@ -329,24 +231,19 @@ title: Home
     </div>
 
     <p class="contact__desc">
-      Open to collaborations, bug bounty teams, and security research opportunities.
-      <!-- EDIT: change to your preferred message -->
+      If you have any questions or want to follow my work—feel free to reach out!
     </p>
 
     <div class="social-links">
-      <a href="mailto:your@email.com" class="social-link">
+      <a href="mailto:cyberkry@proton.me" class="social-link">
         <!-- EDIT: your email -->
-        ✉️ &nbsp; your@email.com
+        ✉️ &nbsp; cyberkry@proton.me
       </a>
-      <a href="https://github.com/YOUR_GITHUB" class="social-link" target="_blank" rel="noopener">
+      <a href="https://github.com/CyberKRY" class="social-link" target="_blank" rel="noopener">
         <!-- EDIT: your GitHub -->
         🐙 &nbsp; GitHub
       </a>
-      <a href="https://linkedin.com/in/YOUR_LINKEDIN" class="social-link" target="_blank" rel="noopener">
-        <!-- EDIT: your LinkedIn -->
-        💼 &nbsp; LinkedIn
-      </a>
-      <a href="https://tryhackme.com/p/YOUR_THM" class="social-link" target="_blank" rel="noopener">
+      <a href="https://tryhackme.com/p/KRY" class="social-link" target="_blank" rel="noopener">
         <!-- EDIT: your TryHackMe profile -->
         🎯 &nbsp; TryHackMe
       </a>
