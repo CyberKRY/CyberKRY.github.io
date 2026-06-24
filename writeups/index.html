@@ -1,0 +1,112 @@
+---
+layout: default
+title: Write-ups
+---
+
+<div class="container writeups-page">
+  <div class="section-header" style="margin-top:56px;">
+    <div class="section-eyebrow">Blog</div>
+    <h2 class="section-title">Write-ups <span>Archive</span></h2>
+  </div>
+
+  <!-- ==================== FOLDER VIEW ==================== -->
+  <div id="folder-view" class="writeup-folders__grid">
+    {% assign platforms = site.posts | group_by: "platform" %}
+    {% for platform in platforms %}
+      {% assign p = platform.name | downcase %}
+      <div class="folder-card" data-platform="{{ p }}" onclick="showPlatform('{{ p }}')" tabindex="0">
+        <div class="folder-card__icon">
+          {% case p %}
+            {% when 'htb' %}🟢
+            {% when 'thm' %}🔴
+            {% when 'portswigger' %}🟠
+            {% else %}🔵
+          {% endcase %}
+        </div>
+        <div class="folder-card__name">
+          {% case p %}
+            {% when 'htb' %}HackTheBox
+            {% when 'thm' %}TryHackMe
+            {% when 'portswigger' %}PortSwigger
+            {% else %}{{ platform.name | capitalize }}
+          {% endcase %}
+        </div>
+        <div class="folder-card__count">{{ platform.items.size }} write-up{% if platform.items.size != 1 %}s{% endif %}</div>
+      </div>
+    {% endfor %}
+
+    {% if platforms.size == 0 %}
+      <p style="color:var(--text-muted);">
+        Пока нет ни одного write-up. Добавь файл в <code>_posts/</code> с полем <code>platform:</code> в front matter — папка появится здесь автоматически.
+      </p>
+    {% endif %}
+  </div>
+
+  <!-- ==================== PLATFORM VIEW ==================== -->
+  <div id="platform-view" class="writeup-list" style="display:none;">
+    <button class="btn btn--outline folder-back-btn" onclick="showFolders()">← Все платформы</button>
+    <h3 id="platform-view__title" class="platform-view__title"></h3>
+
+    {% assign all_posts = site.posts | sort: "date" | reverse %}
+    {% for post in all_posts %}
+    <a href="{{ post.url | relative_url }}" class="writeup-item" data-platform="{{ post.platform | downcase }}" style="display:none;">
+      <span class="writeup-item__date">{{ post.date | date: "%b %d, %Y" }}</span>
+      <span class="writeup-item__platform">
+        {% case post.platform %}
+          {% when 'htb' %}🟢
+          {% when 'thm' %}🔴
+          {% when 'portswigger' %}🟠
+          {% else %}🔵
+        {% endcase %}
+      </span>
+      <span class="writeup-item__title">{{ post.title }}</span>
+      <div class="writeup-item__tags">
+        {% for tag in post.tags limit: 2 %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <span class="writeup-item__arrow">→</span>
+    </a>
+    {% endfor %}
+
+    <p id="no-posts-msg" style="display:none; color:var(--text-muted); padding:20px 0;">Пока нет write-up'ов для этой платформы.</p>
+  </div>
+</div>
+
+<script>
+  function platformDisplayName(p) {
+    const names = { htb: "HackTheBox", thm: "TryHackMe", portswigger: "PortSwigger" };
+    return names[p] || (p.charAt(0).toUpperCase() + p.slice(1));
+  }
+
+  function showPlatform(platform) {
+    document.getElementById('folder-view').style.display = 'none';
+    document.getElementById('platform-view').style.display = 'block';
+    document.getElementById('platform-view__title').textContent = platformDisplayName(platform);
+
+    let visibleCount = 0;
+    document.querySelectorAll('#platform-view .writeup-item').forEach(function (item) {
+      if (item.dataset.platform === platform) {
+        item.style.display = 'flex';
+        visibleCount++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+    document.getElementById('no-posts-msg').style.display = visibleCount === 0 ? 'block' : 'none';
+
+    history.replaceState(null, '', '#' + platform);
+  }
+
+  function showFolders() {
+    document.getElementById('folder-view').style.display = 'grid';
+    document.getElementById('platform-view').style.display = 'none';
+    history.replaceState(null, '', window.location.pathname);
+  }
+
+  // Deep-link support: /writeups/#htb opens that folder directly
+  document.addEventListener('DOMContentLoaded', function () {
+    var hash = window.location.hash.replace('#', '');
+    if (hash) showPlatform(hash);
+  });
+</script>
