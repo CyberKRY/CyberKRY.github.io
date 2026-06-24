@@ -23,5 +23,5 @@ layout: default
     {{ content }}
   </article>
 
-  <a href="{{ '/#writeups' | relative_url }}" class="btn btn--outline" style="margin-bottom:80px;">← Back to Write-ups</a>
+  <a href="{{ '/writeups/' | relative_url }}{% if page.platform %}#{{ page.platform | downcase }}{% endif %}" class="btn btn--outline" style="margin-bottom:80px;">← Back to Write-ups</a>
 </div>
