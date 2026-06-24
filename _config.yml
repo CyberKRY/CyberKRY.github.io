@@ -1,0 +1,43 @@
+title: "YOUR_NAME | Cybersecurity"
+description: "Penetration Tester & Security Researcher"
+author: "YOUR_NAME"
+email: "your@email.com"
+github_username: "YOUR_GITHUB"
+linkedin_username: "YOUR_LINKEDIN"
+twitter_username: "YOUR_TWITTER"
+
+url: "https://YOUR_GITHUB.github.io"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
