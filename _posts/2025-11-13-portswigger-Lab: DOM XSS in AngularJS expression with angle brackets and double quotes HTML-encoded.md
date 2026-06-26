@@ -54,7 +54,7 @@ If we try to find angularjs methods scope, we will find methods that can call a 
 Using this payload, we will execute our alert.
 
 ```
-{{ $emit.constructor('alert()')() }}
+"{{ $emit.constructor('alert()')() }}"
 ```
 <p align="center">
   <img src="/assets/css/img/XXS/XXS39.png" alt="XXS" />
