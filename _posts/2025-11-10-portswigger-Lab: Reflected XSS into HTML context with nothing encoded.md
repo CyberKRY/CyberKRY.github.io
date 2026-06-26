@@ -29,11 +29,11 @@ To solve the lab, perform a cross-site scripting attack that calls the `alert` f
 <script>alert(123)</script>
 ```
 <p align="center">
-  <img src="https://github.com/CyberKRY/CyberKRY.github.io/blob/main/assets/css/img/XXS/XXS1.png" alt="XXS" />
+  <img src="/assets/css/img/XXS/XXS1.png" alt="XXS" />
 </p>
 
 <b>After clicking Search, the script ran and brought up a window in the browser.</b>
 
 <p align="center">
-  <img src="https://github.com/CyberKRY/CyberKRY.github.io/blob/main/assets/css/img/XXS/XXS2.png" alt="XXS" width="700" />
+  <img src="/assets/css/img/XXS/XXS2.png" alt="XXS" />
 </p>
