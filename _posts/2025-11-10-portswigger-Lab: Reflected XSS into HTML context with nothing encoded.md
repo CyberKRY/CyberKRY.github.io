@@ -11,8 +11,10 @@ tags: [xss, web]
 
 ## Overview
 
-**Lab:** Reflected XSS into HTML context with nothing encoded  
-**Platform:** PortSwigger  
+**Lab:** Reflected XSS into HTML context with nothing encoded
+
+**Platform:** PortSwigger
+
 **Difficulty:** Easy  
 
 ---
