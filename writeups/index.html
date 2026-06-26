@@ -3,13 +3,26 @@ layout: default
 title: Write-ups
 ---
 
+<style>
+  .folder-view-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .folder-view-header .platform-view__title {
+    margin: 0;
+  }
+</style>
+
 <div class="container writeups-page">
   <div class="section-header" style="margin-top:56px;">
     <div class="section-eyebrow">Blog</div>
     <h2 class="section-title">Write-ups <span>Archive</span></h2>
   </div>
 
-  <!-- ==================== FOLDER VIEW (платформы) ==================== -->
+  <!-- ==================== FOLDER VIEW (platforms) ==================== -->
   <div id="folder-view" class="writeup-folders__grid">
     {% assign platforms = site.posts | group_by: "platform" %}
     {% for platform in platforms %}
@@ -37,22 +50,26 @@ title: Write-ups
 
     {% if platforms.size == 0 %}
       <p style="color:var(--text-muted);">
-        Пока нет ни одного write-up. Добавь файл в <code>_posts/</code> с полем <code>platform:</code> в front matter — папка появится здесь автоматически.
+        No write-ups yet. Add a file to <code>_posts/</code> with a <code>platform:</code> field in the front matter — a folder will appear here automatically.
       </p>
     {% endif %}
   </div>
 
   <!-- ==================== SUBCATEGORY VIEW (XSS / SQLi / SSRF / ...) ==================== -->
-  <div id="subcategory-view" class="writeup-folders__grid" style="display:none;">
-    <button class="btn btn--outline folder-back-btn" onclick="showFolders()">← Все платформы</button>
-    <h3 id="subcategory-view__title" class="platform-view__title" style="width:100%;"></h3>
-    <div id="subcategory-cards" style="display:contents;"></div>
+  <div id="subcategory-view" style="display:none;">
+    <div class="folder-view-header">
+      <button class="btn btn--outline folder-back-btn" onclick="showFolders()">← All platforms</button>
+      <h3 id="subcategory-view__title" class="platform-view__title"></h3>
+    </div>
+    <div class="writeup-folders__grid" id="subcategory-cards"></div>
   </div>
 
-  <!-- ==================== PLATFORM VIEW (список write-up'ов) ==================== -->
+  <!-- ==================== PLATFORM VIEW (write-up list) ==================== -->
   <div id="platform-view" class="writeup-list" style="display:none;">
-    <button class="btn btn--outline folder-back-btn" id="platform-back-btn" onclick="goBackFromList()">← Назад</button>
-    <h3 id="platform-view__title" class="platform-view__title"></h3>
+    <div class="folder-view-header">
+      <button class="btn btn--outline folder-back-btn" id="platform-back-btn" onclick="goBackFromList()">← Back</button>
+      <h3 id="platform-view__title" class="platform-view__title"></h3>
+    </div>
 
     {% assign all_posts = site.posts | sort: "date" | reverse %}
     {% for post in all_posts %}
@@ -82,7 +99,7 @@ title: Write-ups
     </a>
     {% endfor %}
 
-    <p id="no-posts-msg" style="display:none; color:var(--text-muted); padding:20px 0;">Пока нет write-up'ов для этой категории.</p>
+    <p id="no-posts-msg" style="display:none; color:var(--text-muted); padding:20px 0;">No write-ups in this category yet.</p>
   </div>
 </div>
 
@@ -92,7 +109,7 @@ title: Write-ups
     return names[p] || (p.charAt(0).toUpperCase() + p.slice(1));
   }
 
-  // иконки для категорий — добавляй сюда свои при необходимости
+  // icons for categories — add your own here as needed
   function vulnIcon(slug) {
     const icons = {
       sqli: "🟡", xss: "🟣", csrf: "🔵", clickjacking: "🟤",
@@ -110,43 +127,42 @@ title: Write-ups
     document.getElementById('platform-view').style.display = 'none';
   }
 
-  // Клик по платформе: если у неё есть подкатегории — показываем подпапки, иначе сразу список
+  // Click on platform: PortSwigger gets subcategory folders, everything else goes straight to the list
   function showPlatform(platform) {
-  currentPlatform = platform;
+    currentPlatform = platform;
 
-  // Подкатегории — только для PortSwigger
-  if (platform !== 'portswigger') {
-    cameFromSubcategory = false;
-    renderPostList(platform, null);
-    return;
-  }
-
-  const items = Array.from(document.querySelectorAll('#platform-view .writeup-item'))
-    .filter(item => item.dataset.platform === platform);
-
-  const subtypes = new Map(); // slug -> { label, count }
-  items.forEach(item => {
-    const slug = item.dataset.vulntype;
-    if (slug) {
-      const label = item.dataset.vulntypeLabel || slug;
-      if (!subtypes.has(slug)) subtypes.set(slug, { label, count: 0 });
-      subtypes.get(slug).count++;
+    if (platform !== 'portswigger') {
+      cameFromSubcategory = false;
+      renderPostList(platform, null);
+      return;
     }
-  });
 
-  if (subtypes.size > 0) {
-    cameFromSubcategory = true;
-    renderSubcategories(platform, subtypes);
-  } else {
-    cameFromSubcategory = false;
-    renderPostList(platform, null);
+    const items = Array.from(document.querySelectorAll('#platform-view .writeup-item'))
+      .filter(item => item.dataset.platform === platform);
+
+    const subtypes = new Map(); // slug -> { label, count }
+    items.forEach(item => {
+      const slug = item.dataset.vulntype;
+      if (slug) {
+        const label = item.dataset.vulntypeLabel || slug;
+        if (!subtypes.has(slug)) subtypes.set(slug, { label, count: 0 });
+        subtypes.get(slug).count++;
+      }
+    });
+
+    if (subtypes.size > 0) {
+      cameFromSubcategory = true;
+      renderSubcategories(platform, subtypes);
+    } else {
+      cameFromSubcategory = false;
+      renderPostList(platform, null);
+    }
   }
-}
 
   function renderSubcategories(platform, subtypes) {
     hideAllViews();
-    document.getElementById('subcategory-view').style.display = 'grid';
-    document.getElementById('subcategory-view__title').textContent = platformDisplayName(platform) + ' — категории';
+    document.getElementById('subcategory-view').style.display = 'block';
+    document.getElementById('subcategory-view__title').textContent = platformDisplayName(platform) + ' — Categories';
 
     const container = document.getElementById('subcategory-cards');
     container.innerHTML = '';
@@ -202,7 +218,7 @@ title: Write-ups
     history.replaceState(null, '', window.location.pathname);
   }
 
-  // Deep-link: /writeups/#portswigger или /writeups/#portswigger/xss
+  // Deep-link support: /writeups/#portswigger or /writeups/#portswigger/xss
   document.addEventListener('DOMContentLoaded', function () {
     const hash = window.location.hash.replace('#', '');
     if (!hash) return;
