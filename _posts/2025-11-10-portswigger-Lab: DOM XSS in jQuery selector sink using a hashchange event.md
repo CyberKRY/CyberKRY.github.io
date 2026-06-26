@@ -12,7 +12,9 @@ tags: [xss, web]
 ## Overview
 
 **Lab:** DOM XSS in jQuery selector sink using a hashchange event
-**Platform:** PortSwigger  
+
+**Platform:** PortSwigger
+
 **Difficulty:** Easy  
 
 ---
