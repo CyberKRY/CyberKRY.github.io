@@ -12,7 +12,9 @@ tags: [xss, web]
 ## Overview
 
 **Lab:** Stored XSS into HTML context with nothing encoded
+
 **Platform:** PortSwigger  
+
 **Difficulty:** Easy  
 
 ---
