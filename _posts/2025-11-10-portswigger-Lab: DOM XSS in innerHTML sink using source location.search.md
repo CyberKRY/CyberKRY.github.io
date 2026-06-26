@@ -12,7 +12,9 @@ tags: [xss, web]
 ## Overview
 
 **Lab:** DOM XSS in innerHTML sink using source location.search
-**Platform:** PortSwigger  
+
+**Platform:** PortSwigger
+
 **Difficulty:** Easy  
 
 ---
