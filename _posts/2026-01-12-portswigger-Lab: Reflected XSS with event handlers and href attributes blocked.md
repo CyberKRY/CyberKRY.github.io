@@ -71,5 +71,5 @@ This is what our payload will ultimately look like.
 ```
 
 <p align="center">
-  <img src="https://github.com/CyberKRY/CTF-Writeups/blob/main/PortSwigger/Cross-site%20scripting/Images/XXS106.png" alt="XXS" />
+  <img src="/assets/css/img/XXS/XXS106.png" alt="XXS" />
 </p>
