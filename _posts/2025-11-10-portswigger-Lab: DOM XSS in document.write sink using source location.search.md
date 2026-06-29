@@ -1,6 +1,6 @@
 ---
 layout: post
-title: PortSwigger — DOM XSS in document.write sink using source location.search [Write-up]"
+title: "PortSwigger — DOM XSS in document.write sink using source location.search [Write-up]"
 date: 2025-11-10
 platform: portswigger
 vulntype: XSS
