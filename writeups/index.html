@@ -109,7 +109,6 @@ title: Write-ups
     return names[p] || (p.charAt(0).toUpperCase() + p.slice(1));
   }
 
-  // icons for categories — add your own here as needed
   function vulnIcon(slug) {
     const icons = {
       sqli: "🟡", xss: "🟣", csrf: "🔵", clickjacking: "🟤",
@@ -127,7 +126,6 @@ title: Write-ups
     document.getElementById('platform-view').style.display = 'none';
   }
 
-  // Click on platform: PortSwigger gets subcategory folders, everything else goes straight to the list
   function showPlatform(platform) {
     currentPlatform = platform;
 
@@ -218,7 +216,6 @@ title: Write-ups
     history.replaceState(null, '', window.location.pathname);
   }
 
-  // Deep-link support: /writeups/#portswigger or /writeups/#portswigger/xss
   document.addEventListener('DOMContentLoaded', function () {
     const hash = window.location.hash.replace('#', '');
     if (!hash) return;
