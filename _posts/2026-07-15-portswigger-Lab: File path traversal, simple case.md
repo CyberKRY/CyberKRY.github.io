@@ -78,4 +78,9 @@ And we manage to find a suitable payload that displays data from /etc/passwd in 
 
 
 
+---
+This post is licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+© 2026 CyberKRY
  
