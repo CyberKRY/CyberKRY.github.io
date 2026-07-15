@@ -19,6 +19,7 @@ tags: [web]
 
 ---
 
+
 # Description 
 
 This lab contains a path traversal vulnerability in the display of product images.
