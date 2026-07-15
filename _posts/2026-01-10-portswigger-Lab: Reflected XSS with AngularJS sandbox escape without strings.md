@@ -107,7 +107,7 @@ If we open the `ASCII` table and look at the numbers we have, we can compare the
 ```
 
 <p align="center">
-  <img src="/assets/css/img/XXS/XXS99.png" alt="XXS" />
+  <img src="/assets/css/img/XXS/XXS99.webp" alt="XXS" />
 </p>
 
 Let's try to execute our attack.
