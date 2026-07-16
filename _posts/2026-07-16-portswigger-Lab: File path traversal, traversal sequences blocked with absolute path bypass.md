@@ -49,3 +49,13 @@ Because of this, we can simply replace the image name with `/etc/passwd`. The ap
 <p align="center">
   <img src="/assets/css/img/Path Traversal/PathT6.png" alt="path_traversal" />
 </p>
+
+---
+<div align="center">
+
+This post is licensed under  
+<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+© 2026 CyberKRY
+
+</div>
