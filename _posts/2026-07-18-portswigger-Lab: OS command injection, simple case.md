@@ -35,11 +35,11 @@ In this exercise, we need to execute the `whoami` command and determine the user
 The first thing we'll do is identify the location of the vulnerability. The problem description tells us that it's the section containing product and store IDs. 
 
 <p align="center">
-  <img src="assets/css/img/Command injection/Comnd_inj1.png" alt="Command_injection" />
+  <img src="/assets/css/img/Command injection/Comnd_inj1.png" alt="Command_injection" />
 </p>
 
 <p align="center">
-  <img src="assets/css/img/Command injection/Comnd_inj2.png" alt="Command_injection" />
+  <img src="/assets/css/img/Command injection/Comnd_inj2.png" alt="Command_injection" />
 </p>
 
 On the page, there's a button and a city selector. If we click “Check Stock,” it will show us how many products are in stock. Let's intercept this request using Burp Suite. 
@@ -55,11 +55,11 @@ productId=1&storeId=1|whoami
 ```
 
 <p align="center">
-  <img src="assets/css/img/Command injection/Comnd_inj3.png" alt="Command_injection" />
+  <img src="/assets/css/img/Command injection/Comnd_inj3.png" alt="Command_injection" />
 </p>
 
 <p align="center">
-  <img src="assets/css/img/Command injection/Comnd_inj4.png" alt="Command_injection" />
+  <img src="/assets/css/img/Command injection/Comnd_inj4.png" alt="Command_injection" />
 </p>
 
 It's important to use the | symbol here; if we try anything else, the command won't run. There's another way to do it, and it looks like this: 
@@ -75,11 +75,11 @@ productId=1%26+whoami+%26+%23&storeId=1
 Here, we've commented out `storeid` so it doesn't cause an error. 
 
 <p align="center">
-  <img src="assets/css/img/Command injection/Comnd_inj5.png" alt="Command_injection" />
+  <img src="/assets/css/img/Command injection/Comnd_inj5.png" alt="Command_injection" />
 </p>
 
 <p align="center">
-  <img src="assets/css/img/Command injection/Comnd_inj6.png" alt="Command_injection" />
+  <img src="/assets/css/img/Command injection/Comnd_inj6.png" alt="Command_injection" />
 </p>
 
 After processing the request, we see that the response returned the user 
