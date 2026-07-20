@@ -3,7 +3,7 @@ layout: post
 title: "Lab: Excessive trust in client-side controls [Write-up]"
 date: 2026-07-20
 platform: portswigger
-vulntype: Business_logic_vuln
+vulntype: business_logic_vuln
 difficulty: Easy
 category: write-up
 tags: [web]
