@@ -37,26 +37,26 @@ According to the problem description, we need to buy a jacket by exploiting a lo
 When we go to the home page, we can see various products next to “My Account” and our shopping cart. Let's log in to our wienier account.
 
 <p align="center">
-  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln2.png" alt="Command_injection" />
+  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln2.png" alt="Business_log_vuln" />
 </p>
 
 
 We need to buy a Lightweight l33t leather jacket, so let's choose this item.
 
 <p align="center">
-  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln1.png" alt="Command_injection" />
+  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln1.png" alt="Business_log_vuln" />
 </p>
 
 If we scroll down, we'll see a field for selecting the quantity of items and an “Add to Cart” button. Let's select 1 item and click “Add to Cart.”
 
 <p align="center">
-  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln3.png" alt="Command_injection" />
+  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln3.png" alt="Business_log_vuln" />
 </p>
 
 Next, let's go to our shopping cart, where we can see our items and, most importantly, the balance in our account. If we try to purchase an item by clicking “Place Order,” we obviously won't be able to because we don't have enough money. 
 
 <p align="center">
-  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln4.png" alt="Command_injection" />
+  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln4.png" alt="Business_log_vuln" />
 </p>
 
 On this page, we can add more items, remove items, redeem a coupon, and purchase items. I tried to intercept the request here but couldn't get it to work, so let's go back to the page where we were just adding items to the cart.
@@ -64,7 +64,7 @@ On this page, we can add more items, remove items, redeem a coupon, and purchase
 Let's try to intercept the request here using Burp Suite
 
 <p align="center">
-  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln5.png" alt="Command_injection" />
+  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln5.png" alt="Business_log_vuln" />
 </p>
 
 And as we can see, we have the following parameters:
@@ -80,13 +80,13 @@ productId=1&redir=PRODUCT&quantity=1&price=1
 ```
 
 <p align="center">
-  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln6.png" alt="Command_injection" />
+  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln6.png" alt="Business_log_vuln" />
 </p>
 
 Let's submit the request and go to our shopping cart
 
 <p align="center">
-  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln7.png" alt="Command_injection" />
+  <img src="/assets/css/img/Business logic vulnerabilities/Business_log_vuln7.png" alt="Business_log_vuln" />
 </p>
 
 And yes, the item's price is now $0.01. Now click “Buy Item” and complete the lab.
