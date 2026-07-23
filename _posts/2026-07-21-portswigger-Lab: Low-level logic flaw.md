@@ -59,3 +59,13 @@ At that point I switched to the actual target item (Lightweight l33t leather jac
 </p>
 
 From there I checked out without any issues — lab solved.
+
+---
+<div align="center">
+
+This post is licensed under  
+<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+
+© 2026 CyberKRY
+
+</div>
