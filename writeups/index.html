@@ -112,7 +112,7 @@ title: Write-ups
   function vulnIcon(slug) {
     const icons = {
       sqli: "⚪", xss: "🔴", information_disclosure: "🟢", business_logic_vuln: "🟤",
-      idor: "🟤", xxe: "⚪", path_traversal: "🟢", command_injection: "🟠", authentication: "🟡"
+      access_control_vuln: "🟤", xxe: "⚪", path_traversal: "🟢", command_injection: "🟠", authentication: "🟡"
     };
     return icons[slug] || "📁";
   }
