@@ -34,21 +34,21 @@ Just like in the previous lab, we need to retrieve the API key for the user “c
 After trying various methods, I came across the posts on the page and noticed that a user named carlos had posted once; you can see that his name is a hyperlink that takes you to another page. 
 
 <p align="center">
-  <img src="assets/css/img/Access control/Access_control9.png" alt="access_control_vuln" />
+  <img src="/assets/css/img/Access control/Access_control9.png" alt="access_control_vuln" />
 </p>
 
 <p align="center">
-  <img src="assets/css/img/Access control/Access_control10.png" alt="access_control_vuln" />
+  <img src="/assets/css/img/Access control/Access_control10.png" alt="access_control_vuln" />
 </p>
 
 If you intercept the request using Burp Suite, you'll see that the ID is different from ours. Let's copy it and go to our profile page.
 
 <p align="center">
-  <img src="assets/css/img/Access control/Access_control11.png" alt="access_control_vuln" />
+  <img src="/assets/css/img/Access control/Access_control11.png" alt="access_control_vuln" />
 </p>
 
 <p align="center">
-  <img src="assets/css/img/Access control/Access_control12.png" alt="access_control_vuln" />
+  <img src="/assets/css/img/Access control/Access_control12.png" alt="access_control_vuln" />
 </p>
 
 And yes, there's also an IDOR vulnerability here that allowed us to view the user's profile; we copy the API key, send it back in the response, and complete the lab.
