@@ -86,6 +86,8 @@ Send these two requests to the Repeater and add them to a single group, then sel
   <img src="/assets/css/img/File upload vulnerabilities/file_uplod22.png" alt="file_uploads_vuln" />
 </p>
 
+Once we've obtained the contents of the secret file, we enter the answer and complete the lab.
+
 ---
 <div align="center">
 
@@ -95,7 +97,3 @@ This post is licensed under
 © 2026 CyberKRY
 
 </div>
-
-Once we've obtained the contents of the secret file, we enter the answer and complete the lab.
-
-
