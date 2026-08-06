@@ -27,7 +27,7 @@ To solve the lab, change the stock check URL to access the admin interface at `h
 
 ## Solution
 
-`Server-Side Request Forgery (SSRF)` - is a web vulnerability that allows an attacker to force a server to send requests to arbitrary destinations. By abusing server-side request functionality, an attacker may access internal services, retrieve sensitive information, bypass network restrictions, or interact with systems that are not directly accessible from the internet.
+`Server-Side Request Forgery (SSRF)` is a web vulnerability that allows an attacker to force a server to send requests to arbitrary destinations. By abusing server-side request functionality, an attacker may access internal services, retrieve sensitive information, bypass network restrictions, or interact with systems that are not directly accessible from the internet.
 
 Let's go to the home page and take a look around. 
 
