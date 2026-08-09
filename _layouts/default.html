@@ -34,5 +34,45 @@
     </div>
   </footer>
 
+  <script>
+(function () {
+  function wrapBlock(el, lang) {
+    if (el.closest('.terminal-code')) return;
+    var wrapper = document.createElement('div');
+    wrapper.className = 'terminal-code';
+    el.parentNode.insertBefore(wrapper, el);
+
+    var header = document.createElement('div');
+    header.className = 'terminal-code__header';
+    header.innerHTML =
+      '<span class="terminal-code__dots"><i></i><i></i><i></i></span>' +
+      '<span class="terminal-code__lang">' + lang + '</span>' +
+      '<button class="terminal-code__copy" type="button">Copy</button>';
+
+    wrapper.appendChild(header);
+    wrapper.appendChild(el);
+
+    header.querySelector('.terminal-code__copy').addEventListener('click', function () {
+      var codeEl = el.querySelector('code') || el;
+      navigator.clipboard.writeText(codeEl.innerText).then(function () {
+        var btn = header.querySelector('.terminal-code__copy');
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1400);
+      });
+    });
+  }
+
+  document.querySelectorAll('.post-content div.highlighter-rouge').forEach(function (block) {
+    var m = block.className.match(/language-([\w+-]+)/);
+    wrapBlock(block, m ? m[1] : 'code');
+  });
+
+  document.querySelectorAll('.post-content pre').forEach(function (pre) {
+    if (pre.closest('.terminal-code') || pre.closest('.highlighter-rouge')) return;
+    wrapBlock(pre, 'code');
+  });
+})();
+</script>
+
 </body>
 </html>
