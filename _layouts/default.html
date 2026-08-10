@@ -75,13 +75,16 @@
 </script>
 
 <script>
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
   var overlay = document.createElement('div');
   overlay.className = 'lightbox-overlay';
   overlay.innerHTML = '<span class="lightbox-overlay__close">&times;</span><img src="" alt="">';
   document.body.appendChild(overlay);
 
   var overlayImg = overlay.querySelector('img');
+  var images = document.querySelectorAll('.post-content img');
+
+  console.log('Lightbox: found images =', images.length);
 
   function openLightbox(src, alt) {
     overlayImg.src = src;
@@ -95,8 +98,9 @@
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.post-content img').forEach(function (img) {
+  images.forEach(function (img) {
     img.addEventListener('click', function () {
+      console.log('Lightbox: image clicked', img.src);
       openLightbox(img.src, img.alt);
     });
   });
@@ -106,8 +110,8 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeLightbox();
   });
-})();
-</script>  
+});
+</script>
 
 </body>
 </html>
